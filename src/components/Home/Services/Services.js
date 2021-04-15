@@ -3,7 +3,6 @@ import './Services.css'
 
 const Services = () => {
 
-
     return (
         <div class="main-services">
             <div class="container">
@@ -17,7 +16,7 @@ const Services = () => {
                     <div class="face face2">
                         <div class="content">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
-                            <a href="#">Read More</a>
+                            <a>Read More</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@ const Services = () => {
                     <div class="face face2">
                         <div class="content">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
-                            <a href="#">Read More</a>
+                            <a>Read More</a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +44,7 @@ const Services = () => {
                     <div class="face face2">
                         <div class="content">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
-                            <a href="#">Read More</a>
+                            <a>Read More</a>
                         </div>
                     </div>
                 </div>
