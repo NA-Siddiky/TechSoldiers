@@ -1,32 +1,83 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { Context } from '../../Login/Context/Context';
 
 const NavBar = () => {
+
+    const { user, setUser } = useContext(Context);
+    const { isSignedIn, name } = user;
+
+    const handleSignOut = () => {
+        // console.log('Sign out clicked');
+        firebase
+            .auth()
+            .signOut()
+            .then((res) => {
+                const signedOutUser = {
+                    isSignedIn: false,
+                    name: '',
+                    email: '',
+                };
+                setUser(signedOutUser);
+                // console.log(res);
+            })
+            .catch((error) => {
+                console.log('Error:', error);
+                console.log('Error Message:', error.message);
+            });
+    };
+
     return (
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link ms-5 active" aria-current="page" href="#">Home</a>
+        <nav className="navbar navbar-expand-lg navbar-light">
+            <div className="container-fluid">
+                <Link className="navbar-brand brandName" to="/">
+                    <h4>Tech-Soldiers</h4>
+                </Link>
+                <div
+                    className=" navbar-collapse justify-content-end"
+                    id="navbarSupportedContent"
+                >
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link className="nav-link active" aria-current="page" to="/">
+                                Home
+							</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link ms-5" href="#">About</a>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/orders">
+                                Orders
+							</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link ms-5" href="#">Dental Services</a>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/admin/addproduct">
+                                Admin
+							</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link ms-5" href="#">Reviews</a>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/deals">
+                                Deals
+							</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link ms-5" href="#">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link ms-5" href="#">Contact Us</a>
-                        </li>
+
+                        {isSignedIn ? (
+                            <>
+                                <li className="nav-item">
+                                    <p>{name}</p>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="btn btn-primary" onClick={handleSignOut}>
+                                        Logout
+									</button>
+                                </li>
+                            </>
+                        ) : (
+                            <Link className="nav-link" to="/login">
+                                Login
+                            </Link>
+                        )}
                     </ul>
                 </div>
             </div>

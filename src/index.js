@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ServiceProvider } from './components/Login/Context/Context';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ServiceProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ServiceProvider>,
   document.getElementById('root')
 );
 
