@@ -34,18 +34,22 @@ const Checkout = () => {
 
     const checkoutBtn = () => {
         const orderInfo = {
-            bookName: name,
+            serviceName: name,
             price: price,
             email: email,
             quantity: 1,
             imgUrl: url,
             date: new Date(),
+            status: 'pending'
         };
+        console.log(user);
+        console.log(orderInfo);
         // console.log(orderInfo);
         axios.post('http://localhost:5000/saveorder', orderInfo).then((res) => {
             // console.log(res);
             toast.success('Checkout Successfully');
             history.push("/")
+            console.log('call');
         });
     };
 
@@ -80,14 +84,14 @@ const Checkout = () => {
 
 
                     {
-                        payment && <Elements stripe={stripePromise}><PaymentCard></PaymentCard> </Elements>
+                        payment && <Elements stripe={stripePromise}><PaymentCard checkoutBtn={checkoutBtn}></PaymentCard> </Elements>
                     }
 
 
                 </div>
 
                 <div className="col-md-4">
-                    <img style={{ width: '200px' }} src={service.url} alt="" />
+                    <img style={{ width: '200px' }} src={service.image} alt="" />
                     <h5>{service.name}</h5>
                     <h6>Author: {service.author}</h6>
                     <h5>Price: ৳{service.price}</h5>
