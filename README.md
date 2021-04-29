@@ -7,7 +7,7 @@
 ### Project name:- *Tech Soldiers*
 
 Live Site Link: 
-1. Heroku Server Live Link:- [Tech Soldiers Heroku link](https://tech-soldiers.web.app/)
+1. Website Live Link:- [Tech Soldiers Heroku link](https://tech-soldiers.web.app/)
 
 GitHub Link:-
 
